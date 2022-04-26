@@ -13,6 +13,7 @@
 		F41A82852816CE6100E56AE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F41A82832816CE6100E56AE5 /* Main.storyboard */; };
 		F41A82872816CE6200E56AE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F41A82862816CE6200E56AE5 /* Assets.xcassets */; };
 		F41A828A2816CE6200E56AE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F41A82882816CE6200E56AE5 /* LaunchScreen.storyboard */; };
+		F45A65DD2817D0E200E0828D /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45A65DC2817D0E200E0828D /* SQLiteManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,8 @@
 		F41A82862816CE6200E56AE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F41A82892816CE6200E56AE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F41A828B2816CE6200E56AE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F45A65DC2817D0E200E0828D /* SQLiteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
+		F45A65DE2817D10F00E0828D /* BookOrder-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BookOrder-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,12 +60,14 @@
 			isa = PBXGroup;
 			children = (
 				F41A827D2816CE6100E56AE5 /* AppDelegate.swift */,
+				F45A65DC2817D0E200E0828D /* SQLiteManager.swift */,
 				F41A827F2816CE6100E56AE5 /* SceneDelegate.swift */,
 				F41A82812816CE6100E56AE5 /* ViewController.swift */,
 				F41A82832816CE6100E56AE5 /* Main.storyboard */,
 				F41A82862816CE6200E56AE5 /* Assets.xcassets */,
 				F41A82882816CE6200E56AE5 /* LaunchScreen.storyboard */,
 				F41A828B2816CE6200E56AE5 /* Info.plist */,
+				F45A65DE2817D10F00E0828D /* BookOrder-Bridging-Header.h */,
 			);
 			path = BookOrder;
 			sourceTree = "<group>";
@@ -99,6 +104,7 @@
 				TargetAttributes = {
 					F41A82792816CE6100E56AE5 = {
 						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
 					};
 				};
 			};
@@ -141,6 +147,7 @@
 				F41A82822816CE6100E56AE5 /* ViewController.swift in Sources */,
 				F41A827E2816CE6100E56AE5 /* AppDelegate.swift in Sources */,
 				F41A82802816CE6100E56AE5 /* SceneDelegate.swift in Sources */,
+				F45A65DD2817D0E200E0828D /* SQLiteManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +294,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -304,6 +312,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.xyseer.BookOrder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "BookOrder/BookOrder-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -314,6 +324,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -331,6 +342,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.xyseer.BookOrder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "BookOrder/BookOrder-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
