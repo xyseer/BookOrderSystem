@@ -14,6 +14,7 @@
 		F41A82872816CE6200E56AE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F41A82862816CE6200E56AE5 /* Assets.xcassets */; };
 		F41A828A2816CE6200E56AE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F41A82882816CE6200E56AE5 /* LaunchScreen.storyboard */; };
 		F45A65DD2817D0E200E0828D /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45A65DC2817D0E200E0828D /* SQLiteManager.swift */; };
+		F45A65E22817D65400E0828D /* DBtools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45A65E12817D65400E0828D /* DBtools.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		F41A828B2816CE6200E56AE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F45A65DC2817D0E200E0828D /* SQLiteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
 		F45A65DE2817D10F00E0828D /* BookOrder-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BookOrder-Bridging-Header.h"; sourceTree = "<group>"; };
+		F45A65E12817D65400E0828D /* DBtools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBtools.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				F41A82882816CE6200E56AE5 /* LaunchScreen.storyboard */,
 				F41A828B2816CE6200E56AE5 /* Info.plist */,
 				F45A65DE2817D10F00E0828D /* BookOrder-Bridging-Header.h */,
+				F45A65E12817D65400E0828D /* DBtools.swift */,
 			);
 			path = BookOrder;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F41A82822816CE6100E56AE5 /* ViewController.swift in Sources */,
+				F45A65E22817D65400E0828D /* DBtools.swift in Sources */,
 				F41A827E2816CE6100E56AE5 /* AppDelegate.swift in Sources */,
 				F41A82802816CE6100E56AE5 /* SceneDelegate.swift in Sources */,
 				F45A65DD2817D0E200E0828D /* SQLiteManager.swift in Sources */,
