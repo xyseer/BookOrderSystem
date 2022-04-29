@@ -168,6 +168,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="username" destination="wjF-Ut-9en" id="ePs-si-ORb"/>
+                        <outlet property="userpassword" destination="DH3-fM-ptb" id="f45-sk-BOs"/>
                         <outlet property="welcomeLabel" destination="9wm-l9-a2F" id="jDW-JB-RKK"/>
                     </connections>
                 </viewController>

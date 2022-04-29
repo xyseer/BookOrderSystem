@@ -75,12 +75,20 @@ class DBtools{
     
     // MARK:2 WRITE
     
-    func writeUserTable(userid:Int,username:String,password:String)->Bool{
-        return execNoneQuery("INSERT INTO userTable values(\(userid),'\(username)','\(password)')")
+    func writeUserTable(userid:Int = -1,username:String,password:String)->Bool{
+        if (userid>0){
+            return execNoneQuery("INSERT INTO userTable values(\(userid),'\(username)','\(password)')")}
+        else{
+            return execNoneQuery("INSERT INTO userTable(username,password) values('\(username)','\(password)')")
+        }
     }
     
-    func writeBookTable(bookid:Int,bookname:String,bookthumbpath:String,bookprice:Double,bookcategory:String)->Bool{
-        return execNoneQuery("INSERT INTO bookTable values(\(bookid),'\(bookname)','\(bookthumbpath)',\(bookprice),'\(bookcategory)')")
+    func writeBookTable(bookid:Int = -1,bookname:String,bookthumbpath:String,bookprice:Double,bookcategory:String)->Bool{
+        if (bookid>0){
+            return execNoneQuery("INSERT INTO bookTable values(\(bookid),'\(bookname)','\(bookthumbpath)',\(bookprice),'\(bookcategory)')")}
+        else{
+            return execNoneQuery("INSERT INTO bookTable(bookname,bookthumbpath,bookprice,bookcategory) values('\(bookname)','\(bookthumbpath)',\(bookprice),'\(bookcategory)')")
+        }
     }
     
     func writeBookDetailsTable(bookid:Int,bookimgpath:String,bookfixprice:Double,bookfullname:String,bookauthor:String,bookISBN:String,bookdetailtext:String)->Bool{

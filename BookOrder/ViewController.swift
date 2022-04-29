@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         print(dbtool.searchUserTable(userid:2))
         print(dbtool.searchCartTable(userid: 1))
         dbtool.deleteUserTable(userid: 1)
-        print(dbtool.searchUserTable(username: "xy"))
+        print(dbtool.searchBySQL("SELECT * FROM userTable"))
         print(dbtool.searchUserTable(userid:2))
         print(dbtool.searchCartTable(userid: 1))
     }
