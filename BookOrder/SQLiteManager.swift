@@ -23,7 +23,7 @@ class SQLiteManager:NSObject
         
         let dirpath = FileManager.default.urls(for:.documentDirectory,in:.userDomainMask).first!
         dbPath = dirpath.appendingPathComponent("app.sqlite").path
-        print(dbPath!)
+//        print(dbPath!)
     }
     
     //open database

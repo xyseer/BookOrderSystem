@@ -10,10 +10,10 @@ import Foundation
 class DBtools{
     private let dbManager=SQLiteManager.sharedInstance
     init(){
-        print(FileManager.default.urls(for:.documentDirectory,in:.userDomainMask).first!)
+//        print(FileManager.default.urls(for:.documentDirectory,in:.userDomainMask).first!)
     }
     func initDB()->Bool{
-            return creatTable(sql: "CREATE TABLE if not exists userTable(userid integer primary key autoincrement,username text not null,password text not null)") && creatTable(sql: "CREATE TABLE if not exists bookTable(bookid integer primary key autoincrement, bookname text not null, bookthumbpath text,bookprice double not null, bookcategory text)") && creatTable(sql: "CREATE TABLE if not exists bookDetailsTable(bookid integer primary key autoincrement, bookimgpath text, bookfixprice double, bookfullname text, bookauthor text, bookISBN text, bookdetailtext text)") && creatTable(sql: "CREATE TABLE if not exists cartTable(cartid integer unique, userid integer not null, bookid integer not null, bookprice double not null)") && creatTable(sql: "CREATE TABLE if not exists historyTable(hisid integer, userid integer not null, bookid integer, bookprice double, ordertime text)")
+            return creatTable(sql: "CREATE TABLE if not exists userTable(userid integer primary key autoincrement,username text not null unique,password text not null)") && creatTable(sql: "CREATE TABLE if not exists bookTable(bookid integer primary key autoincrement, bookname text not null, bookthumbpath text,bookprice double not null, bookcategory text)") && creatTable(sql: "CREATE TABLE if not exists bookDetailsTable(bookid integer primary key autoincrement, bookimgpath text, bookfixprice double, bookfullname text, bookauthor text, bookISBN text, bookdetailtext text)") && creatTable(sql: "CREATE TABLE if not exists cartTable(cartid integer unique, userid integer not null, bookid integer not null, bookprice double not null)") && creatTable(sql: "CREATE TABLE if not exists historyTable(hisid integer, userid integer not null, bookid integer, bookprice double, ordertime text)")
         
     }
     
