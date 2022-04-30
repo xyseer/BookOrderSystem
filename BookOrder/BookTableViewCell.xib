@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -95,6 +95,7 @@
                 <outlet property="bookImage" destination="eqO-Fx-jGH" id="UkE-nY-hc0"/>
                 <outlet property="bookName" destination="cHU-vn-Hgr" id="VUz-Ti-39M"/>
                 <outlet property="bookPrice" destination="a3d-cG-z8g" id="LEY-Ug-WTr"/>
+                <outlet property="cellview" destination="H2p-sc-9uM" id="AIP-HF-kSv"/>
                 <outlet property="countInCart" destination="EUU-yu-lo8" id="R7X-Mv-Yev"/>
             </connections>
             <point key="canvasLocation" x="147.10144927536234" y="69.642857142857139"/>

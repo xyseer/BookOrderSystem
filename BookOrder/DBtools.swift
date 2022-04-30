@@ -13,7 +13,7 @@ class DBtools{
 //        print(FileManager.default.urls(for:.documentDirectory,in:.userDomainMask).first!)
     }
     func initDB()->Bool{
-            return creatTable(sql: "CREATE TABLE if not exists userTable(userid integer primary key autoincrement,username text not null unique,password text not null)") && creatTable(sql: "CREATE TABLE if not exists bookTable(bookid integer primary key autoincrement, bookname text not null, bookthumbpath text,bookprice double not null, bookcategory text)") && creatTable(sql: "CREATE TABLE if not exists bookDetailsTable(bookid integer primary key autoincrement, bookimgpath text, bookfixprice double, bookfullname text, bookauthor text, bookISBN text, bookdetailtext text)") && creatTable(sql: "CREATE TABLE if not exists cartTable(cartid integer unique, userid integer not null, bookid integer not null, bookprice double not null)") && creatTable(sql: "CREATE TABLE if not exists historyTable(hisid integer, userid integer not null, bookid integer, bookprice double, ordertime text)")
+            return creatTable(sql: "CREATE TABLE if not exists userTable(userid integer primary key autoincrement,username text not null unique,password text not null)") && creatTable(sql: "CREATE TABLE if not exists bookTable(bookid integer primary key autoincrement, bookname text not null, bookthumbpath text,bookprice double not null, bookcategory text)") && creatTable(sql: "CREATE TABLE if not exists bookDetailsTable(bookid integer primary key autoincrement, bookimgpath text, bookfixprice double, bookfullname text, bookauthor text, bookISBN text, bookdetailtext text)") && creatTable(sql: "CREATE TABLE if not exists cartTable(cartid integer primary key autoincrement, userid integer not null, bookid integer not null, bookprice double not null)") && creatTable(sql: "CREATE TABLE if not exists historyTable(hisid integer, userid integer not null, bookid integer, bookprice double, ordertime text)")
         
     }
     
@@ -95,8 +95,12 @@ class DBtools{
         return execNoneQuery("INSERT INTO bookDetailsTable values(\(bookid),'\(bookimgpath)',\(bookfixprice),'\(bookfullname)','\(bookauthor)','\(bookISBN)','\(bookdetailtext)')")
     }
     
-    func writeCartTable(cartid:Int,userid:Int,bookid:Int,bookprice:Double)->Bool{
-        return execNoneQuery("INSERT INTO cartTable values(\(cartid),\(userid),\(bookid),\(bookprice))")
+    func writeCartTable(cartid:Int = -1,userid:Int,bookid:Int,bookprice:Double)->Bool{
+        if(cartid>0){
+            return execNoneQuery("INSERT INTO cartTable values(\(cartid),\(userid),\(bookid),\(bookprice))")}
+        else{
+            return execNoneQuery("INSERT INTO cartTable(userid,bookid,bookprice) values(\(userid),\(bookid),\(bookprice))")
+        }
     }
     
     func writeHistoryTable(hisid:Int,userid:Int,bookid:Int,bookprice:Double,ordertime:String)->Bool{
