@@ -4,6 +4,7 @@
 //
 //  Created by xy Man on 2022/3/16.
 //
+var userid:Int = -1
 
 import UIKit
 class UserLoginViewController:UIViewController
@@ -115,7 +116,9 @@ let mainBoard:UIStoryboard!=UIStoryboard(name:
 let VCMain =
 mainBoard!
 .instantiateViewController(withIdentifier:
-"vcMain")
+"test")//vcMain//test
+        
+        
 //    (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows[0].rootViewController=VCMain
 //UIApplication.shared.windows[0].rootViewController=VCMain
     do{
@@ -123,6 +126,8 @@ mainBoard!
         try usercode.write(toFile: path, atomically: true, encoding: .utf8)}
     catch{}
         dismiss (animated: true, completion: {(UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows[0].rootViewController=VCMain})
+        userid=result[0]["userid"] as! Int
+
         
 }
 else

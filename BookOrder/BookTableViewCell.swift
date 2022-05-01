@@ -37,7 +37,13 @@ class BookTableViewCell: UITableViewCell {
         }
     }
     @IBAction func minus(_ sender: UIButton) {
-        let cartid:Int = dbtool.searchCartTable(userid: userID, bookid: bookID)[0]["cartid"] as? Int ?? -1
+        //print(userID)
+        //print(bookID)
+        let tmp=dbtool.searchCartTable(userid: userID, bookid: bookID)
+        var cartid:Int = -1
+        if tmp.isEmpty{
+            cartid = tmp[0]["cartid"] as? Int ?? -1}
+        //print(cartid)
         if((cartid>0) && (dbtool.deleteCartTable(cartid: cartid))){
             count-=1
             self.countInCart.text=String(count)

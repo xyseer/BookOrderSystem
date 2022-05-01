@@ -22,6 +22,7 @@
 		F45A65E22817D65400E0828D /* DBtools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45A65E12817D65400E0828D /* DBtools.swift */; };
 		F49B3760281C3B290026249E /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49B375E281C3B290026249E /* BookTableViewCell.swift */; };
 		F49B3761281C3B290026249E /* BookTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49B375F281C3B290026249E /* BookTableViewCell.xib */; };
+		F49D36C8281E418C00B3CB19 /* getBooksFromURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49D36C7281E418C00B3CB19 /* getBooksFromURL.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		F45A65E12817D65400E0828D /* DBtools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBtools.swift; sourceTree = "<group>"; };
 		F49B375E281C3B290026249E /* BookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
 		F49B375F281C3B290026249E /* BookTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookTableViewCell.xib; sourceTree = "<group>"; };
+		F49D36C7281E418C00B3CB19 /* getBooksFromURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getBooksFromURL.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				F49B375E281C3B290026249E /* BookTableViewCell.swift */,
 				F49B375F281C3B290026249E /* BookTableViewCell.xib */,
 				6FBB3EC9281D323C00AD67C9 /* bookTableViewController.swift */,
+				F49D36C7281E418C00B3CB19 /* getBooksFromURL.swift */,
 			);
 			path = BookOrder;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				F41A827E2816CE6100E56AE5 /* AppDelegate.swift in Sources */,
 				F49B3760281C3B290026249E /* BookTableViewCell.swift in Sources */,
 				F41A82802816CE6100E56AE5 /* SceneDelegate.swift in Sources */,
+				F49D36C8281E418C00B3CB19 /* getBooksFromURL.swift in Sources */,
 				F45A65DD2817D0E200E0828D /* SQLiteManager.swift in Sources */,
 				F41E93DB28196E2800DAC8C1 /* UserRegisterViewController.swift in Sources */,
 				F41E93DA28196E2800DAC8C1 /* UserLoginViewController.swift in Sources */,
