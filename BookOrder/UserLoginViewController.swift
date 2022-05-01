@@ -116,7 +116,7 @@ let mainBoard:UIStoryboard!=UIStoryboard(name:
 let VCMain =
 mainBoard!
 .instantiateViewController(withIdentifier:
-"test")//vcMain//test
+"vcMain")//vcMain//test
         
         
 //    (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows[0].rootViewController=VCMain

@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dbtool.initDB()
-        getBooksFromURL()
+//        getBooksFromURL()
 //        dbtool.execNoneQuery("drop table userTable")
 //        dbtool.execNoneQuery("drop table bookTable")
 //        dbtool.execNoneQuery("drop table bookDetailsTable")
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         print(dbtool.searchUserTable(userid:2))
         print(dbtool.searchCartTable(userid: 1))
         dbtool.deleteUserTable(userid: 1)
-        print(dbtool.searchBySQL("SELECT * FROM cartTable"))
+        print(dbtool.searchBySQL("SELECT * FROM bookTable"))
         print(dbtool.searchUserTable(userid:2))
         print(dbtool.searchCartTable(userid: 1))
     }

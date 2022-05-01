@@ -21,7 +21,8 @@ class UserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if(DBtools().initDB()){return}
+        if(DBtools().initDB()){getBooksFromURL()
+            return}
         // Do any additional setup after loading the view.
     }
     

@@ -56,8 +56,8 @@ class DBtools{
     
     func searchBookTable(bookid:Int = -1,bookname:String="",bookcategory:String="")->[[String:AnyObject]]{
         if (bookcategory != "")
-        {return searchBySQL("SELECT * FROM 'bookTable' WHERE bookname='\(bookname)' or userid=\(bookid) or bookcategory='\(bookcategory)'")}
-        else{return searchBySQL("SELECT * FROM 'bookTable' WHERE bookname='\(bookname)' or userid=\(bookid)")}
+        {return searchBySQL("SELECT * FROM 'bookTable' WHERE bookname='\(bookname)' or bookid=\(bookid) or bookcategory='\(bookcategory)'")}
+        else{return searchBySQL("SELECT * FROM 'bookTable' WHERE bookname='\(bookname)' or bookid=\(bookid)")}
     }
     
     func searchBookDetailsTable(bookid:Int = -1,bookfullname:String="")->[[String:AnyObject]]{

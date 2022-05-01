@@ -66,7 +66,7 @@ class BookTableViewCell: UITableViewCell {
         self.bookImage.image=UIImage(contentsOfFile: bookThumbPath)
         self.bookName.text=bookName
         self.bookCurrentPrice=bookPrice
-        self.bookPrice.text=String(format: "%.2f", bookPrice)
+        self.bookPrice.text="￥"+String(format: "%.2f", bookPrice)
         self.count=dbtool.searchCartTable(userid:userID,bookid: bookid).count
         self.countInCart.text=String(count)
         
