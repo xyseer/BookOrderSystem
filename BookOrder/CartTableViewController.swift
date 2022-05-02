@@ -1,30 +1,28 @@
 //
-//  bookTableViewController.swift
+//  CartTableViewController.swift
 //  BookOrder
 //
-//  Created by RTC-08 on 2022/4/30.
+//  Created by xy Man on 2022/5/2.
 //
 
 import UIKit
 
-class bookTableViewController: UITableViewController {
-    
-    @IBOutlet weak var navItem: UINavigationItem!
+class CartTableViewController: UITableViewController {
+
     var books:[[String:AnyObject]]=[]
     let dbtools=DBtools()
-    public var categories:String="全部"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let xib=UINib(nibName: "BookTableViewCell", bundle: nil)
         tableView.register(xib, forCellReuseIdentifier: "bookCell")
         tableView.rowHeight=100
-        if(categories == "全部" ){
-            books = dbtools.searchBySQL("SELECT * FROM bookTable")}
-        else{
-            books = dbtools.searchBookTable(bookcategory: categories)
+        let cart=dbtools.searchCartTable(userid: userid)
+        for item in cart{
+            books.append(dbtools.searchBookTable(bookid: item["bookid"] as! Int)[0])
         }
-        navItem.title=categories
+//        NotificationCenter.default.addObserver(self, selector: Selector("refreshPage"), name: NSNotification.Name("homeRefresh"), object: nil)
+
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -53,6 +51,8 @@ class bookTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "bookCell", for: indexPath) as! BookTableViewCell
         let currentBookInfo = books[indexPath.row]
         cell.initDisplayData(userid: userid, bookid: currentBookInfo["bookid"] as! Int, bookThumbPath: currentBookInfo["bookthumbpath"] as? String ?? "", bookName: currentBookInfo["bookname"] as? String ?? "", bookPrice: currentBookInfo["bookprice"] as? Double ?? 0.0)
+        cell.hidBut()
+
         
 
         // Configure the cell...
@@ -69,6 +69,25 @@ class bookTableViewController: UITableViewController {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 (segue.destination as! BookDetailsTableViewController).supercell = tableView(self.tableView, cellForRowAt: indexPath) as! BookTableViewCell
         }
+        }
+    }
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let cartidTool=dbtools.searchCartTable(userid: userid, bookid:books[indexPath.row]["bookid"] as! Int )
+            if(!cartidTool.isEmpty){
+            if(dbtools.deleteCartTable(cartid: cartidTool[0]["cartid"] as! Int))
+            {
+            books.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)}
+            }
         }
     }
     
@@ -89,7 +108,7 @@ class bookTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
     */
 
@@ -117,5 +136,15 @@ class bookTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+//    func refreshPage()
+//       {
+//
+//               //刷新页面
+//               self.tableView.reloadData()
+//
+//       }
+//    deinit
+//        {
+//            NotificationCenter.default.removeObserver(self)
+//        }
 }

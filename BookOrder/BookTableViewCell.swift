@@ -9,6 +9,8 @@ import UIKit
 
 class BookTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet public weak var minusButton: UIButton!
     @IBOutlet weak var bookImage: UIImageView!
     @IBOutlet weak var bookName: UILabel!
     @IBOutlet weak var countInCart: UILabel!
@@ -20,9 +22,12 @@ class BookTableViewCell: UITableViewCell {
     let dbtool=DBtools()
     @IBOutlet weak var cellview: UIView!
     
+    
     @IBAction func add(_ sender: UIButton) {
         if(dbtool.writeCartTable(userid: userID, bookid: bookID, bookprice: bookCurrentPrice)){
             count+=1
+            Int(tabbaritem.badgeValue!)!
+            tabbaritem.badgeValue=String()
             self.countInCart.text=String(count)
         }
         else{
@@ -41,12 +46,15 @@ class BookTableViewCell: UITableViewCell {
         //print(bookID)
         let tmp=dbtool.searchCartTable(userid: userID, bookid: bookID)
         var cartid:Int = -1
-        if tmp.isEmpty{
+        if !tmp.isEmpty{
             cartid = tmp[0]["cartid"] as? Int ?? -1}
-        //print(cartid)
         if((cartid>0) && (dbtool.deleteCartTable(cartid: cartid))){
             count-=1
             self.countInCart.text=String(count)
+
+
+                
+            
         }
         else{
             let p = UIAlertController(title: "删除失败",message:"抱歉，购物车中未查到此书" ,preferredStyle: .alert)
@@ -67,7 +75,7 @@ class BookTableViewCell: UITableViewCell {
         self.bookName.text=bookName
         self.bookCurrentPrice=bookPrice
         self.bookPrice.text="￥"+String(format: "%.2f", bookPrice)
-        self.count=dbtool.searchCartTable(userid:userID,bookid: bookid).count
+        self.count=dbtool.searchCartTable(userid:userID,bookid: bookID).count
         self.countInCart.text=String(count)
         
     }
@@ -81,6 +89,16 @@ class BookTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func refreshCount(){
+        self.count=dbtool.searchCartTable(userid:userID,bookid: bookID).count
+        self.countInCart.text=String(count)
+    }
+    func hidBut(){
+        self.minusButton.isHidden=true
+        self.addButton.isHidden=true
+        self.countInCart.isHidden=true
     }
     
 }

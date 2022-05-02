@@ -1,24 +1,33 @@
 //
-//  BookDetailViewController.swift
+//  TabBarViewController.swift
 //  BookOrder
 //
 //  Created by xy Man on 2022/5/2.
 //
 
 import UIKit
+var tabbaritem:UITabBarItem=UITabBarItem()
 
-class BookDetailViewController: UIViewController {
-    var supercell:BookTableViewCell=BookTableViewCell()
-    @IBOutlet weak var cell: UIView!
-    
-    @IBOutlet weak var details: UIView!
+class TabBarViewController: UITabBarController {
+    @IBOutlet weak var tabbar: UITabBar!
+    let dbtools=DBtools()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        //cell.addSubview(supercell.contentView)
-        cell.didAddSubview(supercell.contentView)
-        cell.setNeedsDisplay()
+
+        tabbaritem=tabbar.items![1]
+        tabbar.items![1].badgeValue=String(dbtools.searchBySQL("SELECT * FROM cartTable").count)
         // Do any additional setup after loading the view.
     }
+
+
+        
+
+        override func didReceiveMemoryWarning() {
+            super.didReceiveMemoryWarning()
+            // Dispose of any resources that can be recreated.
+        }
+
     
 
     /*
@@ -30,5 +39,6 @@ class BookDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+   
+    
 }

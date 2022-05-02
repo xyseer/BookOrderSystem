@@ -1,39 +1,35 @@
 //
-//  bookTableViewController.swift
+//  BookDetailsTableViewController.swift
 //  BookOrder
 //
-//  Created by RTC-08 on 2022/4/30.
+//  Created by xy Man on 2022/5/2.
 //
 
 import UIKit
 
-class bookTableViewController: UITableViewController {
-    
+class BookDetailsTableViewController: UITableViewController {
+    @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var navItem: UINavigationItem!
-    var books:[[String:AnyObject]]=[]
+    var supercell:BookTableViewCell=BookTableViewCell()
     let dbtools=DBtools()
-    public var categories:String="全部"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let xib=UINib(nibName: "BookTableViewCell", bundle: nil)
         tableView.register(xib, forCellReuseIdentifier: "bookCell")
         tableView.rowHeight=100
-        if(categories == "全部" ){
-            books = dbtools.searchBySQL("SELECT * FROM bookTable")}
+        let bookdetails=dbtools.searchBookDetailsTable(bookid: supercell.bookID)
+        if (bookdetails.isEmpty){detailLabel.text="暂无详细信息！"}
         else{
-            books = dbtools.searchBookTable(bookcategory: categories)
+            detailLabel.text="作者：\(bookdetails[0]["bookauthor"] as! String)\n\nISBN号：\(bookdetails[0]["bookISBN"] as! String)\n\n定价：\(bookdetails[0]["bookfixprice"] as! Double)\n\n内容详情：\(bookdetails[0]["bookdetailtext"] as! String)"
         }
-        navItem.title=categories
+
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -45,32 +41,38 @@ class bookTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return books.count
+        return 1
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "bookCell", for: indexPath) as! BookTableViewCell
-        let currentBookInfo = books[indexPath.row]
-        cell.initDisplayData(userid: userid, bookid: currentBookInfo["bookid"] as! Int, bookThumbPath: currentBookInfo["bookthumbpath"] as? String ?? "", bookName: currentBookInfo["bookname"] as? String ?? "", bookPrice: currentBookInfo["bookprice"] as? Double ?? 0.0)
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "bookCell", for: indexPath) as! BookTableViewCell
+//        cell.userID=supercell.userID
+//        cell.bookID=supercell.bookID
+//        cell.bookImage.image=supercell.bookImage.image
+//        cell.bookName.text=supercell.bookName.text
+//        cell.bookPrice.text=supercell.bookPrice.text
+//        cell.countInCart.text=supercell.countInCart.text
+//        cell.count=supercell.count
+//        print(cell.count)
+//        print(cell.bookName)
         
 
         // Configure the cell...
 
-        return cell
+        return supercell
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        performSegue(withIdentifier: "displayDetails", sender: Any.self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "displayDetails" {
-            if let indexPath = self.tableView.indexPathForSelectedRow {
-                (segue.destination as! BookDetailsTableViewController).supercell = tableView(self.tableView, cellForRowAt: indexPath) as! BookTableViewCell
-        }
-        }
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+//        performSegue(withIdentifier: "displayDetails", sender: Any.self)
+//    }
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "booktablewithcategory" {
+//            if let indexPath = self.tableView.indexPathForSelectedRow {
+//                (segue.destination as! BookDetailViewController).supercell = tableView(self.tableView, cellForRowAt: indexPath) as! BookTableViewCell
+//        }
+//        }
+//    }
     
 
     /*
@@ -89,7 +91,7 @@ class bookTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
     */
 

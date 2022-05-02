@@ -65,6 +65,9 @@ class DBtools{
     }
     
     func searchCartTable(userid:Int = -1,bookid:Int = -1)->[[String:AnyObject]]{
+        if(userid>0 && bookid>0){
+            return searchBySQL("SELECT * FROM 'cartTable' WHERE userid=\(userid) and bookid=\(bookid)")
+        }
         return searchBySQL("SELECT * FROM 'cartTable' WHERE userid=\(userid) or bookid=\(bookid)")
     }
     

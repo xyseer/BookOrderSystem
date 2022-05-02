@@ -44,16 +44,17 @@
             </objects>
             <point key="canvasLocation" x="-1223" y="35"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="z6m-cq-wKu">
             <objects>
-                <tabBarController storyboardIdentifier="vcMain" id="FAS-dO-ifl" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="vcMain" id="FAS-dO-ifl" customClass="TabBarViewController" customModule="BookOrder" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="c2I-W6-C8N">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <outlet property="tabbar" destination="c2I-W6-C8N" id="GdF-EZ-Dda"/>
                         <segue destination="BW6-HD-yCM" kind="relationship" relationship="viewControllers" id="shG-eS-9FE"/>
                         <segue destination="qeB-QI-e9u" kind="relationship" relationship="viewControllers" id="qeZ-mw-v40"/>
                         <segue destination="U02-8T-DR5" kind="relationship" relationship="viewControllers" id="yOV-ET-DAs"/>
@@ -66,7 +67,7 @@
         <!--购物车-->
         <scene sceneID="Z5k-vS-Syc">
             <objects>
-                <tableViewController id="qeB-QI-e9u" sceneMemberID="viewController">
+                <tableViewController id="qeB-QI-e9u" customClass="CartTableViewController" customModule="BookOrder" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="gjM-uK-9fQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -179,54 +180,64 @@
                     <navigationItem key="navigationItem" id="wRP-MC-6v2"/>
                     <connections>
                         <outlet property="navItem" destination="wRP-MC-6v2" id="4Pw-2d-LSy"/>
-                        <segue destination="xGH-W1-p8P" kind="show" identifier="displayDetails" id="ZdI-5a-JL0"/>
+                        <segue destination="r4j-IR-gIz" kind="show" identifier="displayDetails" id="bIq-qD-89P"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SN2-wB-3gL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2261" y="-958"/>
+            <point key="canvasLocation" x="2330" y="-958"/>
         </scene>
         <!--详情-->
-        <scene sceneID="Yyk-2O-Yc6">
+        <scene sceneID="Vlx-DP-LMn">
             <objects>
-                <viewController id="xGH-W1-p8P" customClass="BookDetailViewController" customModule="BookOrder" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="2eL-bZ-mKJ">
+                <tableViewController id="r4j-IR-gIz" customClass="BookDetailsTableViewController" customModule="BookOrder" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="HuA-iN-Et6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Uq-Ho-lCi" userLabel="cell">
-                                <rect key="frame" x="0.0" y="88" width="414" height="100"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="TJl-mt-BJf"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Edv-FY-WF3">
-                                <rect key="frame" x="0.0" y="188" width="414" height="695"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="sR3-IL-HqE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Edv-FY-WF3" firstAttribute="top" secondItem="1Uq-Ho-lCi" secondAttribute="bottom" id="3Hv-Fu-FlU"/>
-                            <constraint firstItem="Edv-FY-WF3" firstAttribute="bottom" secondItem="sR3-IL-HqE" secondAttribute="bottom" constant="70" id="5QE-L7-M2M"/>
-                            <constraint firstItem="sR3-IL-HqE" firstAttribute="trailing" secondItem="Edv-FY-WF3" secondAttribute="trailing" id="6jN-IK-u88"/>
-                            <constraint firstItem="1Uq-Ho-lCi" firstAttribute="leading" secondItem="sR3-IL-HqE" secondAttribute="leading" id="7Py-wF-RfQ"/>
-                            <constraint firstItem="Edv-FY-WF3" firstAttribute="leading" secondItem="sR3-IL-HqE" secondAttribute="leading" id="QNn-gx-Kdz"/>
-                            <constraint firstItem="sR3-IL-HqE" firstAttribute="trailing" secondItem="1Uq-Ho-lCi" secondAttribute="trailing" id="Tgs-AP-Bjd"/>
-                            <constraint firstItem="1Uq-Ho-lCi" firstAttribute="top" secondItem="sR3-IL-HqE" secondAttribute="top" id="b8U-Za-N9t"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="详情" id="gJm-f2-K0k"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="5YQ-Qk-5Vk">
+                            <rect key="frame" x="0.0" y="110.5" width="414" height="100"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="df" lineBreakMode="clip" numberOfLines="10" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RSu-i4-EHD">
+                                    <rect key="frame" x="40" y="25" width="334" height="27.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <viewLayoutGuide key="safeArea" id="xZQ-8r-CMM"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="RSu-i4-EHD" firstAttribute="leading" secondItem="xZQ-8r-CMM" secondAttribute="leading" constant="40" id="4Je-00-t5e"/>
+                                <constraint firstItem="RSu-i4-EHD" firstAttribute="top" secondItem="xZQ-8r-CMM" secondAttribute="top" constant="25" id="4wp-k3-Qmu"/>
+                                <constraint firstItem="xZQ-8r-CMM" firstAttribute="trailing" secondItem="RSu-i4-EHD" secondAttribute="trailing" constant="40" id="VYH-gD-cBL"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="nlV-at-lWk">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nlV-at-lWk" id="1bc-IA-JHd">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="r4j-IR-gIz" id="2C3-GL-cbs"/>
+                            <outlet property="delegate" destination="r4j-IR-gIz" id="NsN-YX-HmS"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="详情" id="1ev-Kh-HS9"/>
                     <connections>
-                        <outlet property="cell" destination="1Uq-Ho-lCi" id="kfH-Sl-yvc"/>
-                        <outlet property="details" destination="Edv-FY-WF3" id="wky-q7-uPH"/>
+                        <outlet property="detailLabel" destination="RSu-i4-EHD" id="9Jr-Sf-AZj"/>
+                        <outlet property="navItem" destination="1ev-Kh-HS9" id="WpL-XK-QTD"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3cI-MJ-ZJm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mkS-60-NDP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3075.36231884058" y="-958.92857142857133"/>
+            <point key="canvasLocation" x="3142.0289855072465" y="-958.25892857142856"/>
         </scene>
         <!--图书-->
         <scene sceneID="NQO-m2-x2t">
