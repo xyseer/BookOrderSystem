@@ -1,31 +1,35 @@
 //
-//  bookTableViewController.swift
+//  CategoryTableViewController.swift
 //  BookOrder
 //
-//  Created by RTC-08 on 2022/4/30.
+//  Created by xy Man on 2022/5/2.
 //
 
 import UIKit
 
-class bookTableViewController: UITableViewController {
+class CategoryTableViewController: UITableViewController {
+ 
     
-    @IBOutlet weak var navItem: UINavigationItem!
-    var books:[[String:AnyObject]]=[]
     let dbtools=DBtools()
-    public var categories:String="全部"
-
+    var categoriesArray:Array<String>=Array()
     override func viewDidLoad() {
         super.viewDidLoad()
-        let xib=UINib(nibName: "BookTableViewCell", bundle: nil)
-        tableView.register(xib, forCellReuseIdentifier: "bookCell")
-        tableView.rowHeight=100
-        if(categories == "全部" ){
-            books = dbtools.searchBySQL("SELECT * FROM bookTable")}
-        else{
-            books = dbtools.searchBookTable(bookcategory: categories)
+        let tmp=dbtools.searchBySQL("SELECT * FROM bookTable")
+        var categories:Set<String>=Set()
+        categories.insert("全部")
+        for item in tmp{
+            categories.insert(item["bookcategory"] as? String ?? "全部")
         }
-        navItem.title=categories
-
+        
+        categoriesArray=Array(categories)
+        for i in 0..<categoriesArray.count{
+            if(categoriesArray[i]=="全部"){
+            let temp:String=categoriesArray[0]
+                categoriesArray[0]=categoriesArray[i]
+                categoriesArray[i]=temp
+                
+            }
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -35,22 +39,16 @@ class bookTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return books.count
+        return categoriesArray.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "bookCell", for: indexPath) as! BookTableViewCell
-        let currentBookInfo = books[indexPath.row]
-        cell.initDisplayData(userid: userid, bookid: currentBookInfo["bookid"] as! Int, bookThumbPath: currentBookInfo["bookthumbpath"] as? String ?? "", bookName: currentBookInfo["bookname"] as? String ?? "", bookPrice: currentBookInfo["bookprice"] as? Double ?? 0.0)
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Details", for: indexPath)
+        cell.textLabel?.text=categoriesArray[indexPath.row]
 
         // Configure the cell...
 
@@ -58,13 +56,13 @@ class bookTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        performSegue(withIdentifier: "displayDetails", sender: Any.self)
+        performSegue(withIdentifier: "booktablewithcategory", sender: Any.self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "booktablewithcategory" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                (segue.destination as! BookDetailViewController).supercell = tableView(self.tableView, cellForRowAt: indexPath) as! BookTableViewCell
+                (segue.destination as! bookTableViewController).categories = categoriesArray[indexPath.row]
         }
         }
     }

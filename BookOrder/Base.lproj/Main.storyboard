@@ -54,7 +54,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Rel-pZ-9sL" kind="relationship" relationship="viewControllers" id="hgK-6i-JQW"/>
+                        <segue destination="BW6-HD-yCM" kind="relationship" relationship="viewControllers" id="shG-eS-9FE"/>
                         <segue destination="qeB-QI-e9u" kind="relationship" relationship="viewControllers" id="qeZ-mw-v40"/>
                         <segue destination="U02-8T-DR5" kind="relationship" relationship="viewControllers" id="yOV-ET-DAs"/>
                     </connections>
@@ -121,7 +121,39 @@
             </objects>
             <point key="canvasLocation" x="603" y="911"/>
         </scene>
-        <!--图书-->
+        <!--分类-->
+        <scene sceneID="d9n-i1-b8Q">
+            <objects>
+                <tableViewController id="FRh-hk-UZN" customClass="CategoryTableViewController" customModule="BookOrder" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="g1s-Zc-hUG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Categories" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Details" id="VKL-Hf-nnm">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VKL-Hf-nnm" id="gRU-hg-gHZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="FRh-hk-UZN" id="Jhv-jo-EzC"/>
+                            <outlet property="delegate" destination="FRh-hk-UZN" id="V8O-tu-AqZ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="分类" id="SNf-sY-d1O"/>
+                    <connections>
+                        <segue destination="Rel-pZ-9sL" kind="show" identifier="booktablewithcategory" id="wDc-H2-p8u"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fcs-yi-SYH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1481" y="-958"/>
+        </scene>
+        <!--Book Table View Controller-->
         <scene sceneID="4dd-Wv-93U">
             <objects>
                 <tableViewController id="Rel-pZ-9sL" customClass="bookTableViewController" customModule="BookOrder" customModuleProvider="target" sceneMemberID="viewController">
@@ -144,11 +176,75 @@
                             <outlet property="delegate" destination="Rel-pZ-9sL" id="8ho-U8-n07"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="图书" image="book.fill" catalog="system" id="Q8d-Ci-EZu"/>
+                    <navigationItem key="navigationItem" id="wRP-MC-6v2"/>
+                    <connections>
+                        <outlet property="navItem" destination="wRP-MC-6v2" id="4Pw-2d-LSy"/>
+                        <segue destination="xGH-W1-p8P" kind="show" identifier="displayDetails" id="ZdI-5a-JL0"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SN2-wB-3gL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="602.89855072463774" y="-927.45535714285711"/>
+            <point key="canvasLocation" x="2261" y="-958"/>
+        </scene>
+        <!--详情-->
+        <scene sceneID="Yyk-2O-Yc6">
+            <objects>
+                <viewController id="xGH-W1-p8P" customClass="BookDetailViewController" customModule="BookOrder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2eL-bZ-mKJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Uq-Ho-lCi" userLabel="cell">
+                                <rect key="frame" x="0.0" y="88" width="414" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="TJl-mt-BJf"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Edv-FY-WF3">
+                                <rect key="frame" x="0.0" y="188" width="414" height="695"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sR3-IL-HqE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Edv-FY-WF3" firstAttribute="top" secondItem="1Uq-Ho-lCi" secondAttribute="bottom" id="3Hv-Fu-FlU"/>
+                            <constraint firstItem="Edv-FY-WF3" firstAttribute="bottom" secondItem="sR3-IL-HqE" secondAttribute="bottom" constant="70" id="5QE-L7-M2M"/>
+                            <constraint firstItem="sR3-IL-HqE" firstAttribute="trailing" secondItem="Edv-FY-WF3" secondAttribute="trailing" id="6jN-IK-u88"/>
+                            <constraint firstItem="1Uq-Ho-lCi" firstAttribute="leading" secondItem="sR3-IL-HqE" secondAttribute="leading" id="7Py-wF-RfQ"/>
+                            <constraint firstItem="Edv-FY-WF3" firstAttribute="leading" secondItem="sR3-IL-HqE" secondAttribute="leading" id="QNn-gx-Kdz"/>
+                            <constraint firstItem="sR3-IL-HqE" firstAttribute="trailing" secondItem="1Uq-Ho-lCi" secondAttribute="trailing" id="Tgs-AP-Bjd"/>
+                            <constraint firstItem="1Uq-Ho-lCi" firstAttribute="top" secondItem="sR3-IL-HqE" secondAttribute="top" id="b8U-Za-N9t"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="详情" id="gJm-f2-K0k"/>
+                    <connections>
+                        <outlet property="cell" destination="1Uq-Ho-lCi" id="kfH-Sl-yvc"/>
+                        <outlet property="details" destination="Edv-FY-WF3" id="wky-q7-uPH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3cI-MJ-ZJm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3075.36231884058" y="-958.92857142857133"/>
+        </scene>
+        <!--图书-->
+        <scene sceneID="NQO-m2-x2t">
+            <objects>
+                <navigationController id="BW6-HD-yCM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="图书" image="book.fill" catalog="system" id="FzG-oP-TKC"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NnQ-CI-UUe">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="FRh-hk-UZN" kind="relationship" relationship="rootViewController" id="A4J-eM-YUd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZEd-0h-cdO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="603" y="-958"/>
         </scene>
     </scenes>
     <resources>
