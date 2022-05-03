@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class CartTableViewController: UITableViewController {
 
     var books:[[String:AnyObject]]=[]
@@ -31,6 +32,11 @@ class CartTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     override func viewWillAppear(_ animated: Bool) {
+        books=[]
+        let cart=dbtools.searchCartTable(userid: userid)
+        for item in cart{
+            books.append(dbtools.searchBookTable(bookid: item["bookid"] as! Int)[0])
+        }
         tableView.reloadData()
     }
 
@@ -87,6 +93,7 @@ class CartTableViewController: UITableViewController {
             {
             books.remove(at: indexPath.row)
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)}
+                tabbaritem.badgeValue=String(Int(tabbaritem.badgeValue!)!-1)
             }
         }
     }

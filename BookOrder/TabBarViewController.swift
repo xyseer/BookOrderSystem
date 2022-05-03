@@ -17,10 +17,14 @@ class TabBarViewController: UITabBarController {
 
         tabbaritem=tabbar.items![1]
         tabbar.items![1].badgeValue=String(dbtools.searchBySQL("SELECT * FROM cartTable").count)
+        self.tabBarController?.delegate = self as? UITabBarControllerDelegate
+
         // Do any additional setup after loading the view.
     }
 
-
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        (self.viewControllers![1] as! CartTableViewController).viewWillAppear(true)
+    }
         
 
         override func didReceiveMemoryWarning() {

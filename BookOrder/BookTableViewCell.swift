@@ -26,8 +26,8 @@ class BookTableViewCell: UITableViewCell {
     @IBAction func add(_ sender: UIButton) {
         if(dbtool.writeCartTable(userid: userID, bookid: bookID, bookprice: bookCurrentPrice)){
             count+=1
-            Int(tabbaritem.badgeValue!)!
-            tabbaritem.badgeValue=String()
+            
+            tabbaritem.badgeValue=String(Int(tabbaritem.badgeValue!)!+1)
             self.countInCart.text=String(count)
         }
         else{
@@ -50,6 +50,7 @@ class BookTableViewCell: UITableViewCell {
             cartid = tmp[0]["cartid"] as? Int ?? -1}
         if((cartid>0) && (dbtool.deleteCartTable(cartid: cartid))){
             count-=1
+            tabbaritem.badgeValue=String(Int(tabbaritem.badgeValue!)!-1)
             self.countInCart.text=String(count)
 
 
