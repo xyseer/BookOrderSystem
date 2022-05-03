@@ -9,19 +9,28 @@ import UIKit
 
 
 class CartTableViewController: UITableViewController {
-
+    @IBOutlet weak var totalprice: UILabel!
+    
+    @IBOutlet weak var confirmButton: UIButton!
+    
+    
     var books:[[String:AnyObject]]=[]
     let dbtools=DBtools()
+    var totalprice_Double:Double=0.0
+    var isHis:Bool=false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let xib=UINib(nibName: "BookTableViewCell", bundle: nil)
         tableView.register(xib, forCellReuseIdentifier: "bookCell")
         tableView.rowHeight=100
+        if(!isHis){
         let cart=dbtools.searchCartTable(userid: userid)
         for item in cart{
             books.append(dbtools.searchBookTable(bookid: item["bookid"] as! Int)[0])
-        }
+        }}
+        else{confirmButton.isHidden=true}
+        totalprice.text="总计：￥"+String(format: "%.2f",totalprice_Double)
 //        NotificationCenter.default.addObserver(self, selector: Selector("refreshPage"), name: NSNotification.Name("homeRefresh"), object: nil)
 
 
@@ -32,12 +41,34 @@ class CartTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     override func viewWillAppear(_ animated: Bool) {
+        if(!isHis){
         books=[]
+        totalprice_Double=0.0
         let cart=dbtools.searchCartTable(userid: userid)
         for item in cart{
             books.append(dbtools.searchBookTable(bookid: item["bookid"] as! Int)[0])
         }
+        for item in books{
+            totalprice_Double+=item["bookprice"] as! Double
+        }
+        if totalprice != nil{
+            totalprice.text="总计：￥"+String(format: "%.2f",totalprice_Double)}
+
         tableView.reloadData()
+        }
+    }
+
+    
+    func repreHis(){
+        isHis=true
+        for item in books{
+            totalprice_Double+=item["bookprice"] as! Double
+        }
+        if let totalprice=totalprice{totalprice.text="总计：￥"+String(format: "%.2f",totalprice_Double)}
+
+
+        tableView.reloadData()
+        
     }
 
     // MARK: - Table view data source
@@ -86,14 +117,19 @@ class CartTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if(isHis){return}
         if editingStyle == .delete {
             let cartidTool=dbtools.searchCartTable(userid: userid, bookid:books[indexPath.row]["bookid"] as! Int )
             if(!cartidTool.isEmpty){
             if(dbtools.deleteCartTable(cartid: cartidTool[0]["cartid"] as! Int))
             {
+                totalprice_Double-=books[indexPath.row]["bookprice"] as! Double
+                totalprice.text="总计：￥"+String(format: "%.2f",totalprice_Double)
+
             books.remove(at: indexPath.row)
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)}
                 tabbaritem.badgeValue=String(Int(tabbaritem.badgeValue!)!-1)
+                
             }
         }
     }

@@ -9,11 +9,16 @@ import UIKit
 
 class UserRegisterViewController: UIViewController {
 
+    @IBAction func tapped(_ sender: Any) {
+        username.resignFirstResponder()
+        userpassword.resignFirstResponder()
+    }
     @IBOutlet weak var username: UITextField!
     
     @IBOutlet weak var userpassword: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        userpassword.textContentType = .oneTimeCode
 
         // Do any additional setup after loading the view.
     }

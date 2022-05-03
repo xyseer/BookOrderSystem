@@ -56,8 +56,8 @@
                     <connections>
                         <outlet property="tabbar" destination="c2I-W6-C8N" id="GdF-EZ-Dda"/>
                         <segue destination="BW6-HD-yCM" kind="relationship" relationship="viewControllers" id="shG-eS-9FE"/>
-                        <segue destination="qeB-QI-e9u" kind="relationship" relationship="viewControllers" id="qeZ-mw-v40"/>
-                        <segue destination="U02-8T-DR5" kind="relationship" relationship="viewControllers" id="yOV-ET-DAs"/>
+                        <segue destination="cy1-NV-F6d" kind="relationship" relationship="viewControllers" id="lvo-Ue-PTG"/>
+                        <segue destination="nbZ-bB-uPd" kind="relationship" relationship="viewControllers" id="akg-Qd-gZp"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OZO-P0-MGT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -72,6 +72,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="VQ2-Sx-2vU">
+                            <rect key="frame" x="0.0" y="110.5" width="414" height="97"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3yY-zs-xDg">
+                                    <rect key="frame" x="251" y="29" width="114" height="43"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="filled" title="支付">
+                                        <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <segue destination="lmZ-Vv-XCx" kind="popoverPresentation" popoverAnchorView="3yY-zs-xDg" id="Yl2-h6-rDV">
+                                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                        </segue>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="zongji" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2T-nm-XWp">
+                                    <rect key="frame" x="51" y="34" width="69" height="33"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                    <color key="textColor" systemColor="systemRedColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <viewLayoutGuide key="safeArea" id="4qM-r5-xfz"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="K2T-nm-XWp" firstAttribute="leading" secondItem="4qM-r5-xfz" secondAttribute="leading" constant="51" id="IDN-cd-r1H"/>
+                                <constraint firstAttribute="bottom" secondItem="3yY-zs-xDg" secondAttribute="bottom" constant="25" id="gIP-2c-vuk"/>
+                                <constraint firstAttribute="trailing" secondItem="3yY-zs-xDg" secondAttribute="trailing" constant="49" id="oQ8-MW-UO7"/>
+                                <constraint firstItem="4qM-r5-xfz" firstAttribute="bottom" secondItem="K2T-nm-XWp" secondAttribute="bottom" constant="30" id="xH6-Uh-VoA"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="vHd-jh-cSb">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
@@ -87,16 +119,104 @@
                             <outlet property="delegate" destination="qeB-QI-e9u" id="rQc-Sa-C8U"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="购物车" image="cart.fill" catalog="system" id="h4w-vq-D4E"/>
+                    <navigationItem key="navigationItem" title="购物车" id="1SF-9P-GQm"/>
+                    <connections>
+                        <outlet property="confirmButton" destination="3yY-zs-xDg" id="d5r-lW-H8B"/>
+                        <outlet property="totalprice" destination="K2T-nm-XWp" id="wHK-2g-QhT"/>
+                        <segue destination="r4j-IR-gIz" kind="show" identifier="displayDetails" id="jKg-Wa-h1M"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SlQ-Q6-u9b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1836" y="35"/>
+            <point key="canvasLocation" x="2179.7101449275365" y="115.84821428571428"/>
+        </scene>
+        <!--Confirm View Controller-->
+        <scene sceneID="j39-Da-P5T">
+            <objects>
+                <viewController id="lmZ-Vv-XCx" customClass="ConfirmViewController" customModule="BookOrder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nN9-qr-7A0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="支付成功！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4zq-ee-Pdj">
+                                <rect key="frame" x="128" y="402" width="197" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <color key="textColor" systemColor="systemBlueColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="LS0-5f-auG">
+                                <rect key="frame" x="128" y="234.5" width="159" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PXg-JY-vI4">
+                                <rect key="frame" x="140" y="487" width="135" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EvD-vC-moT">
+                                <rect key="frame" x="109" y="647" width="197" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="返回">
+                                    <fontDescription key="titleFontDescription" type="italicSystem" pointSize="24"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="back:" destination="lmZ-Vv-XCx" eventType="touchUpInside" id="IO2-1K-cVe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0SD-ii-Eze"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="iq5-Di-1fp"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UM0-5O-CHy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2884.057971014493" y="117.85714285714285"/>
+        </scene>
+        <!--购物车-->
+        <scene sceneID="C0v-ko-b65">
+            <objects>
+                <navigationController id="cy1-NV-F6d" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="购物车" image="cart.fill" catalog="system" id="rnO-Gz-N8e"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZO6-d8-4Nv">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="qeB-QI-e9u" kind="relationship" relationship="rootViewController" id="hBC-1q-Rio"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yb6-a9-kKJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1411" y="116"/>
         </scene>
         <!--历史-->
+        <scene sceneID="oZ1-7K-Mgu">
+            <objects>
+                <navigationController storyboardIdentifier="hisnav" id="nbZ-bB-uPd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="历史" image="clock.fill" catalog="system" id="Kj3-BS-Ro9"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RbW-lm-B7r">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="U02-8T-DR5" kind="relationship" relationship="rootViewController" id="gN5-xR-SC2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RJt-ND-ceJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="603" y="911"/>
+        </scene>
+        <!--历史订单-->
         <scene sceneID="j15-6e-SA3">
             <objects>
-                <tableViewController id="U02-8T-DR5" sceneMemberID="viewController">
+                <tableViewController id="U02-8T-DR5" customClass="HistoryTableViewController" customModule="BookOrder" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="TTC-12-1mD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -117,10 +237,14 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="历史" image="clock.fill" catalog="system" id="FwZ-QR-Xi3"/>
+                    <navigationItem key="navigationItem" title="历史订单" id="td8-fl-d8W"/>
+                    <connections>
+                        <segue destination="ofc-ME-AfJ" kind="show" identifier="displayhisDetail" id="w14-hA-ouu"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WV6-u0-u6D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="603" y="911"/>
+            <point key="canvasLocation" x="1480" y="911"/>
         </scene>
         <!--分类-->
         <scene sceneID="d9n-i1-b8Q">
@@ -257,13 +381,84 @@
             </objects>
             <point key="canvasLocation" x="603" y="-958"/>
         </scene>
+        <!--购物车-->
+        <scene sceneID="ftM-6N-gtA">
+            <objects>
+                <tableViewController id="ofc-ME-AfJ" customClass="CartTableViewController" customModule="BookOrder" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="uOB-M2-OgZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="fMi-7N-86k">
+                            <rect key="frame" x="0.0" y="110.5" width="414" height="97"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bc-JD-65B">
+                                    <rect key="frame" x="251" y="29" width="114" height="43"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="filled" title="支付">
+                                        <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
+                                    </buttonConfiguration>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="zongji" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ybR-yy-jdp">
+                                    <rect key="frame" x="51" y="34" width="69" height="33"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                    <color key="textColor" systemColor="systemRedColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <viewLayoutGuide key="safeArea" id="L8Z-8n-veC"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="3bc-JD-65B" secondAttribute="trailing" constant="49" id="DLe-2J-D3a"/>
+                                <constraint firstAttribute="bottom" secondItem="3bc-JD-65B" secondAttribute="bottom" constant="25" id="KWm-X0-vG6"/>
+                                <constraint firstItem="ybR-yy-jdp" firstAttribute="leading" secondItem="L8Z-8n-veC" secondAttribute="leading" constant="51" id="ZrJ-QO-LAI"/>
+                                <constraint firstItem="L8Z-8n-veC" firstAttribute="bottom" secondItem="ybR-yy-jdp" secondAttribute="bottom" constant="30" id="qb6-p0-L2D"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="aPE-4J-CmU">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aPE-4J-CmU" id="waZ-LN-TOI">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ofc-ME-AfJ" id="4Zi-8x-8ee"/>
+                            <outlet property="delegate" destination="ofc-ME-AfJ" id="cD8-Kf-636"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="购物车" id="8FC-Fj-Bxr"/>
+                    <connections>
+                        <outlet property="confirmButton" destination="3bc-JD-65B" id="7Sx-A5-WOP"/>
+                        <outlet property="totalprice" destination="ybR-yy-jdp" id="4po-tL-J0k"/>
+                        <segue destination="r4j-IR-gIz" kind="show" identifier="displayDetails" id="qC4-09-HLO"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fb9-WO-Fk3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2329" y="911"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="jKg-Wa-h1M"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="book.fill" catalog="system" width="128" height="95"/>
         <image name="cart.fill" catalog="system" width="128" height="102"/>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="clock.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

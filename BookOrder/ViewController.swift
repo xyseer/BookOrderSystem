@@ -21,7 +21,7 @@ class ViewController: UIViewController {
 //        dbtool.execNoneQuery("drop table bookTable")
 //        dbtool.execNoneQuery("drop table bookDetailsTable")
 //        dbtool.execNoneQuery("drop table cartTable")
-//        dbtool.execNoneQuery("drop table historyTable")
+        dbtool.execNoneQuery("drop table historyTable")
         // Do any additional setup after loading the view.
     }
     @IBAction func test_button_clicked(_ sender: Any) {

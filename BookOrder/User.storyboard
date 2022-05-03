@@ -136,7 +136,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DH3-fM-ptb">
                                 <rect key="frame" x="176" y="426" width="169" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES" smartDashesType="no" textContentType="one-time-code"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wjF-Ut-9en">
                                 <rect key="frame" x="210" y="277" width="135" height="34"/>
@@ -146,6 +146,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8S0-Hv-jS3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="8S0-Hv-jS3" firstAttribute="bottom" secondItem="nhv-Ea-RQp" secondAttribute="bottom" constant="64" id="03x-EQ-sG4"/>
                             <constraint firstItem="zO8-Zu-YGO" firstAttribute="leading" secondItem="4oR-Iw-Kv8" secondAttribute="leading" id="DAI-VY-DlD"/>
@@ -166,6 +167,9 @@
                             <constraint firstItem="9wm-l9-a2F" firstAttribute="centerX" secondItem="8S0-Hv-jS3" secondAttribute="centerX" id="rPi-9J-0Au"/>
                             <constraint firstItem="wjF-Ut-9en" firstAttribute="trailing" secondItem="DH3-fM-ptb" secondAttribute="trailing" id="tfm-86-Smr"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="yR0-q8-pN0" appends="YES" id="c70-z8-23s"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="username" destination="wjF-Ut-9en" id="ePs-si-ORb"/>
@@ -174,6 +178,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mom-bE-IiI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="yR0-q8-pN0">
+                    <connections>
+                        <action selector="tapped:" destination="bdG-u8-cA6" id="K1m-Db-GwS"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="704.34782608695662" y="53.571428571428569"/>
         </scene>

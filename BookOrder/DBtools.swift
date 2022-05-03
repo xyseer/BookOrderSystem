@@ -72,6 +72,9 @@ class DBtools{
     }
     
     func searchHistoryTable(userid:Int = -1,hisid:Int = -1)->[[String:AnyObject]]{
+        if((userid>0) && (hisid>0)){
+            return searchBySQL("SELECT * FROM 'historyTable' WHERE userid=\(userid) and hisid=\(hisid)")
+        }
         return searchBySQL("SELECT * FROM 'historyTable' WHERE userid=\(userid) or hisid=\(hisid)")
     }
     
@@ -140,6 +143,13 @@ class DBtools{
             return execNoneQuery("UPDATE userTable set username='\(after_username)' where userid=\(original_userid)")
         }
     }// only packaged the update of userTable, others will update by delete and write.
+    
+    func updateBookPath(bookid:Int,bookthumbpath:String){
+        if(execNoneQuery("UPDATE bookTable set bookthumbpath='\(bookthumbpath)' where bookid=\(bookid)")&&execNoneQuery("UPDATE bookDetailsTable set bookimgpath='\(bookthumbpath)'")){
+            return
+        }
+    }
+    
     
     func updateBookTable(origin_bookid:Int,bookname:String,bookthumbpath:String,bookprice:Double,bookcategory:String)->Int{
         if (execNoneQuery("delete from bookTable where bookid=\(origin_bookid)")){

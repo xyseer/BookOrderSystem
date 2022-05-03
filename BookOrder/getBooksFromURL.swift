@@ -52,6 +52,9 @@ func getBooksFromURL()->Void{
                    }
                    }
                    }
+                   else{
+                       dbtools.updateBookPath(bookid: booktmp[0]["bookid"] as? Int ?? -1, bookthumbpath: pathImg)
+                   }
                    
                    
                }
@@ -76,7 +79,7 @@ func downloadImg(url:URL,filename:String) ->Void {
            }
         if let objectData = objectData{
             do{
-                let target=FileManager.default.urls(for:.documentDirectory,in:.userDomainMask).first!.appendingPathComponent("\(filename).jpg")
+                let target=FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("\(filename).jpg")
                 try objectData.write(to: target)
             }
             catch{

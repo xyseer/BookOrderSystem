@@ -4,7 +4,7 @@
 //
 //  Created by xy Man on 2022/5/2.
 //
-
+var cartView:CartTableViewController=CartTableViewController()
 import UIKit
 var tabbaritem:UITabBarItem=UITabBarItem()
 
@@ -23,7 +23,9 @@ class TabBarViewController: UITabBarController {
     }
 
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        (self.viewControllers![1] as! CartTableViewController).viewWillAppear(true)
+        ((self.viewControllers![1] as! UINavigationController).viewControllers[0] as! CartTableViewController).viewWillAppear(true)
+        cartView=(self.viewControllers![1] as! UINavigationController).viewControllers[0] as! CartTableViewController
+        ((self.viewControllers![2] as! UINavigationController).viewControllers[0] as! HistoryTableViewController).viewWillAppear(true)
     }
         
 
